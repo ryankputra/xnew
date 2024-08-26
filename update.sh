@@ -37,8 +37,8 @@ fun_bar() {
 }
 res1() {
     wget https://raw.githubusercontent.com/sctunnel/sctunnel/main/Cdy/menu.zip
-    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/sctunnel/sctunnel/main/Enc/encrypt" ; chmod +x /usr/bin/enc
-    7z x -pEasyStore@86 menu.zip
+    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/ryankputra/xnew/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+    7z x -ryystore2126@ menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
     rm -rf menu
