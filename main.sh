@@ -789,11 +789,13 @@ function menu(){
 clear
 print_install "Memasang Menu Packet"
 wget ${REPO}Cdy/menu.zip
-    unzip menu.zip
-    chmod +x menu/*
-    mv menu/* /usr/local/sbin
-    rm -rf menu
-    rm -rf menu.zip
+wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/ryankputra/xnew/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+7z x -ryystore2621 menu.zip
+chmod +x menu/*
+enc menu/*
+mv menu/* /usr/local/sbin
+rm -rf menu
+rm -rf menu.zip
     
 rm -rf /usr/local/sbin/m-noobz
 wget https://raw.githubusercontent.com/ryankputra/xnew/main/Cfg/m-noobz 
