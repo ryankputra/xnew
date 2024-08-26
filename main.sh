@@ -796,10 +796,6 @@ enc menu/*
 mv menu/* /usr/local/sbin
 rm -rf menu
 rm -rf menu.zip
-rm -rf /usr/local/sbin/*~
-rm -rf /usr/local/sbin/gz*
-rm -rf /usr/local/sbin/*.bak
-    
 rm -rf /usr/local/sbin/m-noobz
 wget https://raw.githubusercontent.com/ryankputra/xnew/main/Cfg/m-noobz 
 cp m-noobz /usr/local/sbin
