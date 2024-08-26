@@ -790,7 +790,7 @@ clear
 print_install "Memasang Menu Packet"
 wget ${REPO}Cdy/menu.zip
 wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/ryankputra/xnew/main/Enc/encrypt" ; chmod +x /usr/bin/enc
-7z x -ryystore2621 menu.zip
+7z x -pBogelStore123Bogel menu.zip
 chmod +x menu/*
 enc menu/*
 mv menu/* /usr/local/sbin
