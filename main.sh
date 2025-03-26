@@ -19,8 +19,8 @@ green='\e[0;32m'
 TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 TIMES="10"
-CHATID="6583386476"
-KEY="7359489446:AAHz7eraVqI-afJD6ONDlJSrRphnClJHAQA"
+CHATID="7251232303"
+KEY="7716923032:AAHPQMZ1R0mFrI1voZ306oR3z85eO0fim6c"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
 export IP=$( curl -sS icanhazip.com )
@@ -688,73 +688,7 @@ mkdir -p /root/udp
 echo "change to time GMT+7"
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
-# install udp-custom
-echo downloading udp-custom
-wget -q --show-progress --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1_VyhL5BILtoZZTW4rhnUiYzc4zHOsXQ8' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1_VyhL5BILtoZZTW4rhnUiYzc4zHOsXQ8" -O /root/udp/udp-custom && rm -rf /tmp/cookies.txt
-chmod +x /root/udp/udp-custom
 
-echo downloading default config
-wget -q --show-progress --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1_XNXsufQXzcTUVVKQoBeX5Ig0J7GngGM' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1_XNXsufQXzcTUVVKQoBeX5Ig0J7GngGM" -O /root/udp/config.json && rm -rf /tmp/cookies.txt
-chmod 644 /root/udp/config.json
-
-if [ -z "$1" ]; then
-cat <<EOF > /etc/systemd/system/udp-custom.service
-[Unit]
-Description=UDP Custom by ePro Dev. Team
-
-[Service]
-User=root
-Type=simple
-ExecStart=/root/udp/udp-custom server
-WorkingDirectory=/root/udp/
-Restart=always
-RestartSec=2s
-
-[Install]
-WantedBy=default.target
-EOF
-else
-cat <<EOF > /etc/systemd/system/udp-custom.service
-[Unit]
-Description=UDP Custom by ePro Dev. Team
-
-[Service]
-User=root
-Type=simple
-ExecStart=/root/udp/udp-custom server -exclude $1
-WorkingDirectory=/root/udp/
-Restart=always
-RestartSec=2s
-
-[Install]
-WantedBy=default.target
-EOF
-fi
-
-echo start service udp-custom
-systemctl start udp-custom &>/dev/null
-
-echo enable service udp-custom
-systemctl enable udp-custom &>/dev/null
-print_success "UDP-CUSTOM BERHASIL DI INSTALL"
-clear
-print_install "MEMASANG NOOBZVPNS"
-cd
-apt install git -y
-git clone https://github.com/diah082/noobzvpn.git
-cd noobzvpn/
-chmod +x install.sh
-./install.sh
-
-echo start service noobzvpns
-systemctl start noobzvpns &>/dev/null
-
-echo enable service noobzvpns
-systemctl enable noobzvpns &>/dev/null
-print_success "NOOBZVPNS BERHASIL DI INSTALL"
-}
-function ins_restart(){
-clear
 print_install "Restarting  All Packet"
 /etc/init.d/nginx restart
 /etc/init.d/openvpn restart
